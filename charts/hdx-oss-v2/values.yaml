@@ -1,7 +1,7 @@
 global:
   imageRegistry: ""
   imagePullSecrets: []
-
+  storageClassName: []
 hyperdx:
   image: "hyperdx/hyperdx:2-beta"
   apiKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

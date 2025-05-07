@@ -8,6 +8,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: {{ .Values.global.storageClass }}
   resources:
     requests:
       storage: {{ .Values.persistence.redis.size }}
@@ -23,6 +24,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: {{ .Values.global.storageClass }}
   resources:
     requests:
       storage: {{ .Values.persistence.mongodb.size }}
