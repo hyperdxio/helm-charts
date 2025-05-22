@@ -35,20 +35,34 @@ spec:
       containers:
         - name: app
           image: "{{ .Values.hyperdx.image }}"
+          securityContext:
+            allowPrivilegeEscalation: {{ .Values.hyperdx.securityContext.allowPrivilegeEscalation | default false }}
+            appArmorProfile:
+              type: {{ .Values.hyperdx.securityContext.appArmorProfile.type | default "RuntimeDefault" }}
+            capabilities:
+              add: {{ .Values.hyperdx.securityContext.capabilities.add | default "[]" }}
+              drop: {{ .Values.hyperdx.securityContext.capabilities.drop | default "[]" }}
+            privileged: {{ .Values.hyperdx.securityContext.privileged | default false }}
+            readOnlyRootFilesystem: {{ .Values.hyperdx.securityContext.readOnlyRootFilesystem | default false }}
+            runAsGroup: {{ .Values.hyperdx.securityContext.runAsGroup | default 0 }}
+            runAsUser: {{ .Values.hyperdx.securityContext.runAsUser | default 0 }}
+            runAsNonRoot: {{ .Values.hyperdx.securityContext.runAsNonRoot | default false }}
           ports:
             - name: app-port
-              containerPort: {{ .Values.hyperdx.appPort }}
+              containerPort: {{ .Values.hyperdx.app.port }}
             - name: api-port
-              containerPort: {{ .Values.hyperdx.apiPort }}
+              containerPort: {{ .Values.hyperdx.api.port }}
           envFrom:
             - configMapRef:
                 name: {{ include "hdx-oss.fullname" . }}-app-config
           env:
+            {{- if .Values.hyperdx.api.generateKeySecret}}
             - name: HYPERDX_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ include "hdx-oss.fullname" . }}-app-secrets
                   key: api-key
+            {{- end }}
             {{- with .Values.hyperdx.env }}
             {{- toYaml . | nindent 12 }}
             {{- end }}

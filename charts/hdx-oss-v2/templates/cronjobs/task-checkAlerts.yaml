@@ -29,7 +29,7 @@ spec:
                 - name: NODE_ENV
                   value: "production"
                 - name: OTEL_SERVICE_NAME
-                  value: "hdx-oss-task-check-alerts"
+                  value: "{{ include "hdx-oss.fullname" . }}-alerts"
               resources:
                 {{- toYaml .Values.tasks.checkAlerts.resources | nindent 16 }}
 {{- end }}

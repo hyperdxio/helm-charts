@@ -4,11 +4,27 @@ global:
   storageClassName: []
 hyperdx:
   image: "hyperdx/hyperdx:2-beta"
-  apiKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  apiPort: 8000
-  appPort: 3000
-  appUrl: "http://localhost"
+  api:
+    key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    port: 8000
+    generateKeySecret: true # disable to manually create the secret
+  app:
+    port: 3000
+    url: "http://localhost"
+    appendPort: false  # Set to true if you want to append the port to the URL in generated links
   logLevel: "info"
+  securityContext:
+    allowPrivilegeEscalation:
+    appArmorProfile:
+      type: "RuntimeDefault" # Set to "RuntimeDefault" for AppArmor support, can also use "Unconfined"
+    capabilities:
+      add: [] # add: ["NET_ADMIN", "NET_BIND_SERVICE"] for reverse proxy support
+      drop: []
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+    runAsNonRoot: false
   usageStatsEnabled: true
   annotations: {}
     # myAnnotation: "myValue"
