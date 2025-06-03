@@ -2,11 +2,12 @@ suite: Test MongoDB Deployment
 templates:
   - mongodb-deployment.yaml
 tests:
-  - it: should render both deployment and service
+  - it: should render both deployment and service when enabled
     set:
       mongodb:
         image: mongo:5.0.14-focal
         port: 27017
+        enabled: true
     asserts:
       - hasDocuments:
           count: 2
@@ -16,3 +17,11 @@ tests:
       - documentIndex: 1
         isKind:
           of: Service 
+  
+  - it: should not render any documents when disabled
+    set:
+      mongodb:
+        enabled: false
+    asserts:
+      - hasDocuments:
+          count: 0
