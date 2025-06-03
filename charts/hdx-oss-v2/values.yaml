@@ -156,6 +156,7 @@ hyperdx:
 mongodb:
   image: "mongo:5.0.14-focal"
   port: 27017
+  enabled: true
 
 clickhouse:
   image: "clickhouse/clickhouse-server:24-alpine"
