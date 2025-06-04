@@ -155,6 +155,9 @@ mongodb:
   image: "mongo:5.0.14-focal"
   port: 27017
   enabled: true
+  persistence:
+    enabled: true
+    dataSize: 10Gi
 
 clickhouse:
   image: "clickhouse/clickhouse-server:24-alpine"
@@ -204,11 +207,6 @@ otel:
   clickhousePrometheusEndpoint:
   # Clickhouse database to send logs/traces/metrics to. Defaults to "default"
   clickhouseDatabase: "default"
-
-persistence:
-  mongodb:
-    enabled: true
-    size: 10Gi
 
 tasks:
   enabled: false
