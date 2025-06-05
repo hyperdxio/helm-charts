@@ -1,5 +1,11 @@
 # helm-charts
 
+## 0.5.3
+
+### Patch Changes
+
+- cec5983: enable using remote mongodb
+
 ## 0.5.2
 
 ### Patch Changes
