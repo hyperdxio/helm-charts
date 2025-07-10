@@ -1,5 +1,11 @@
 # helm-charts
 
+## 0.6.6
+
+### Patch Changes
+
+- f9c8a4c: feat: improve availability of HyperDX pods
+
 ## 0.6.5
 
 ### Patch Changes
