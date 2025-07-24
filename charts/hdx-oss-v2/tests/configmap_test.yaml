@@ -36,7 +36,7 @@ tests:
           path: data.USAGE_STATS_ENABLED
           value: "true"
       - equal:
-          path: data.CRON_IN_APP_DISABLED
+          path: data.RUN_SCHEDULED_TASKS_EXTERNALLY
           value: "false"
       - matchRegex:
           path: data.MONGO_URI
