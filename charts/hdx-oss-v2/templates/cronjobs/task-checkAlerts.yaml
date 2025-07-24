@@ -31,6 +31,8 @@ spec:
                   value: "production"
                 - name: OTEL_SERVICE_NAME
                   value: "hdx-oss-task-check-alerts"
+                - name: APP_TYPE
+                  value: "scheduled-task"
               resources:
                 {{- toYaml .Values.tasks.checkAlerts.resources | nindent 16 }}
 {{- end }}
