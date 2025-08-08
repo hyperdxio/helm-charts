@@ -1,5 +1,12 @@
 # helm-charts
 
+## 0.6.9
+
+### Patch Changes
+
+- 2a8dac4: chore: Update appVersion to 2.1.1
+- 76c6da5: feat: add livenessProbe and readinessProbe for services
+
 ## 0.6.8
 
 ### Patch Changes
