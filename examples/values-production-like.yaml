@@ -1,0 +1,86 @@
+# Production-like configuration with resource limits, node selectors, and persistence
+# Usage: ./scripts/e2e-ingress-test.sh --config examples/values-production-like.yaml
+
+hyperdx:
+  # These will be overridden by the script with actual domain
+  appUrl: "PLACEHOLDER_DOMAIN"
+  frontendUrl: "PLACEHOLDER_DOMAIN"
+  
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    path: "/(.*)"
+    pathType: "ImplementationSpecific"
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "60" 
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    tls:
+      enabled: false
+
+  # Multiple replicas for HA
+  replicas: 2
+  
+  # Node selector for dedicated nodes
+  nodeSelector:
+    workload-type: "observability"
+  
+  # Resource limits
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+
+  # Pod disruption budget
+  podDisruptionBudget:
+    enabled: true
+
+# MongoDB with larger persistence and resources
+mongodb:
+  replicas: 1
+  persistence:
+    enabled: true
+    dataSize: 10Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+  nodeSelector:
+    workload-type: "database"
+
+# ClickHouse with larger persistence and resources
+clickhouse:
+  persistence:
+    enabled: true
+    dataSize: 20Gi
+    logsSize: 5Gi
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "4Gi"
+      cpu: "2000m"
+  nodeSelector:
+    workload-type: "database"
+
+# OTEL collector with resources
+otel:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  nodeSelector:
+    workload-type: "observability"

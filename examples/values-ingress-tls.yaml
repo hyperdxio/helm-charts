@@ -1,0 +1,37 @@
+# Ingress configuration with TLS/HTTPS enabled
+# Usage: ./scripts/e2e-ingress-test.sh --config examples/values-ingress-tls.yaml
+
+hyperdx:
+  # These will be overridden by the script with actual domain
+  appUrl: "PLACEHOLDER_DOMAIN_HTTPS"
+  frontendUrl: "PLACEHOLDER_DOMAIN_HTTPS"
+  
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    path: "/(.*)"
+    pathType: "ImplementationSpecific"
+    annotations:
+      # Force SSL redirect
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      # Use cert-manager for automatic certificate generation
+      cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    tls:
+      enabled: true
+      secretName: "hyperdx-tls-cert"
+
+# Minimal resources for testing
+mongodb:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+clickhouse:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+# OTEL collector
+otel:
+  enabled: true

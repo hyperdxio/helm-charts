@@ -1,0 +1,66 @@
+# Minimal configuration for resource-constrained environments
+# Usage: ./scripts/e2e-ingress-test.sh --config examples/values-minimal.yaml
+
+hyperdx:
+  # These will be overridden by the script with actual domain
+  appUrl: "PLACEHOLDER_DOMAIN"
+  frontendUrl: "PLACEHOLDER_DOMAIN"
+  
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    path: "/(.*)"
+    pathType: "ImplementationSpecific"
+    annotations: {}
+    tls:
+      enabled: false
+
+  # Single replica
+  replicas: 1
+  
+  # Minimal resource requests
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+# MongoDB with minimal settings
+mongodb:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "50m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+
+# ClickHouse with minimal settings
+clickhouse:
+  persistence:
+    enabled: true
+    dataSize: 2Gi
+    logsSize: 1Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+# OTEL collector minimal
+otel:
+  enabled: true
+  resources:
+    requests:
+      memory: "32Mi"
+      cpu: "25m"
+    limits:
+      memory: "128Mi"
+      cpu: "100m"

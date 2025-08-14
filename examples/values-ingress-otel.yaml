@@ -1,0 +1,55 @@
+# Ingress configuration with OTEL collector exposed for external telemetry
+# Usage: ./scripts/e2e-ingress-test.sh --config examples/values-ingress-otel.yaml
+
+hyperdx:
+  # These will be overridden by the script with actual domain
+  appUrl: "PLACEHOLDER_DOMAIN"
+  frontendUrl: "PLACEHOLDER_DOMAIN"
+  
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    path: "/(.*)"
+    pathType: "ImplementationSpecific"
+    annotations: {}
+    tls:
+      enabled: false
+    
+    # Additional ingresses for OTEL collector
+    additionalIngresses:
+      - name: otel-collector
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /$2
+          nginx.ingress.kubernetes.io/use-regex: "true"
+        ingressClassName: nginx
+        hosts:
+          - host: "PLACEHOLDER_OTEL_DOMAIN"  # Will be replaced by script
+            paths:
+              - path: /v1/traces(/|$)(.*)
+                pathType: ImplementationSpecific
+                port: 4318
+              - path: /v1/metrics(/|$)(.*)
+                pathType: ImplementationSpecific
+                port: 4318
+              - path: /v1/logs(/|$)(.*)
+                pathType: ImplementationSpecific
+                port: 4318
+
+# Minimal resources for testing
+mongodb:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+clickhouse:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+# OTEL collector configuration
+otel:
+  enabled: true
+  # Expose more ports for external access
+  service:
+    type: ClusterIP
+    annotations: {}

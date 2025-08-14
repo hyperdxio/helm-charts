@@ -1,0 +1,32 @@
+# Basic ingress configuration
+# Usage: ./scripts/e2e-ingress-test.sh --config examples/values-ingress-basic.yaml
+
+hyperdx:
+  # These will be overridden by the script with actual domain
+  appUrl: "PLACEHOLDER_DOMAIN"
+  frontendUrl: "PLACEHOLDER_DOMAIN"
+  
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    # host will be set by script
+    path: "/(.*)"
+    pathType: "ImplementationSpecific"
+    annotations: {}
+    tls:
+      enabled: false
+
+# Minimal resources for testing
+mongodb:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+clickhouse:
+  persistence:
+    enabled: true
+    dataSize: 1Gi
+
+# Keep OTEL collector simple
+otel:
+  enabled: true
