@@ -97,6 +97,10 @@ spec:
                 secretKeyRef:
                   name: {{ include "hdx-oss.fullname" . }}-app-secrets
                   key: api-key
+            {{- if .Values.hyperdx.ingestionApiKey }}
+            - name: INGESTION_API_KEY
+              value: {{ .Values.hyperdx.ingestionApiKey | quote }}
+            {{- end }}
             {{- if .Values.hyperdx.useExistingConfigSecret }}
             - name: DEFAULT_CONNECTIONS
               valueFrom:

@@ -146,3 +146,21 @@ tests:
                   }
                 }
               ]
+
+  - it: should not include INGESTION_API_KEY when not configured
+    asserts:
+      - notContains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: INGESTION_API_KEY
+
+  - it: should include INGESTION_API_KEY when configured
+    set:
+      hyperdx:
+        ingestionApiKey: "test-ingestion-key-123"
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: INGESTION_API_KEY
+            value: "test-ingestion-key-123"
