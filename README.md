@@ -235,7 +235,17 @@ hyperdx:
 
 ## Configuration
 
-### API Key Setup
+### Ingestion API Key Setup
+
+In addition to autogenerating a secure API key, HyperDX supports setting your 
+own custom API Key. It is automatically configured as a secret. Set the 
+`hyperdx.ingestionApiKey` value to set a custom API key.
+
+```sh
+helm install my-hyperdx --set hyperdx.ingestionApiKey=my-api-key
+```
+
+### HyperDX Telemetry
 
 After successfully deploying HyperDX, you'll need to configure the API key to enable the app's telemetry data collection:
 

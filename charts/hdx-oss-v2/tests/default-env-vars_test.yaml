@@ -154,7 +154,7 @@ tests:
           content:
             name: INGESTION_API_KEY
 
-  - it: should include INGESTION_API_KEY when configured
+  - it: should include INGESTION_API_KEY as secret reference when configured
     set:
       hyperdx:
         ingestionApiKey: "test-ingestion-key-123"
@@ -163,4 +163,7 @@ tests:
           path: spec.template.spec.containers[0].env
           content:
             name: INGESTION_API_KEY
-            value: "test-ingestion-key-123"
+            valueFrom:
+              secretKeyRef:
+                name: RELEASE-NAME-hdx-oss-v2-app-secrets
+                key: ingestion-api-key
