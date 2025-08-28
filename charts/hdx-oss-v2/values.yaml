@@ -40,7 +40,8 @@ hyperdx:
     #   value: "value1"
     #   effect: "NoSchedule"
   apiKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  # Optional ingestion API key for data ingestion authentication
+  # Optional ingestion API key for data ingestion authentication. This allows a 
+  # user to set their own custom API Key for ingestion
   ingestionApiKey: ""
   apiPort: 8000
   appPort: 3000
