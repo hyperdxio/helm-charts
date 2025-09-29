@@ -50,8 +50,8 @@ spec:
       {{- if .Values.mongodb.enabled }}
       initContainers:
         - name: wait-for-mongodb
-          image: busybox:1.37.0
-          command: ['sh', '-c', 'until nc -z {{ include "hdx-oss.fullname" . }}-mongodb {{ .Values.mongodb.port }}; do echo waiting for mongodb; sleep 2; done;']
+          image: {{ .Values.dependencyWait.image }}
+          command: ['sh', '-c', 'until nc -z {{ include "hdx-oss.fullname" . }}-mongodb {{ .Values.mongodb.port }}; do echo waiting for mongodb; sleep {{ .Values.dependencyWait.backoffSeconds }}; done;']
       {{- end }}
       containers:
         - name: app
