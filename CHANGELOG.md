@@ -1,5 +1,12 @@
 # helm-charts
 
+## 0.8.0
+
+### Minor Changes
+
+- 6bafe5c: feat: implement safe clickhouse upgrade process + resource limits support
+- 6bafe5c: chore: bump clickhouse to v25.7
+
 ## 0.7.3
 
 ### Patch Changes
