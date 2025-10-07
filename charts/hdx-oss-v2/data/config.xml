@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <clickhouse>
+   <user_directories>
+        <users_xml>
+            <path>/etc/clickhouse-server/users.xml</path>
+        </users_xml>
+    </user_directories>
+
     <logger>
         <level>information</level>
         <console>true</console>
@@ -26,6 +32,9 @@
     <default_database>default</default_database>
     <timezone>UTC</timezone>
     <mlock_executable>false</mlock_executable>
+
+    <!-- Graceful shutdown settings -->
+    <shutdown_wait_unfinished>60</shutdown_wait_unfinished>
 
     {{- if .Values.clickhouse.prometheus.enabled }}
     <!-- Prometheus exporter -->
