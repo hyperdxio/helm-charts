@@ -53,6 +53,10 @@ spec:
           image: "busybox@sha256:1fcf5df59121b92d61e066df1788e8df0cc35623f5d62d9679a41e163b6a0cdb"
           imagePullPolicy: IfNotPresent
           command: ['sh', '-c', 'until nc -z {{ include "hdx-oss.fullname" . }}-mongodb {{ .Values.mongodb.port }}; do echo waiting for mongodb; sleep 2; done;']
+          {{- if and (hasKey .Values.hyperdx "initContainer") (hasKey .Values.hyperdx.initContainer "resources") }}
+          resources:
+            {{- toYaml .Values.hyperdx.initContainer.resources | nindent 12}}
+          {{- end }}
       {{- end }}
       containers:
         - name: app
