@@ -98,6 +98,11 @@ spec:
                 secretKeyRef:
                   name: {{ include "hdx-oss.fullname" . }}-app-secrets
                   key: api-key
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "hdx-oss.fullname" . }}-app-secrets
+                  key: anthropic-api-key
             {{- if .Values.hyperdx.useExistingConfigSecret }}
             - name: DEFAULT_CONNECTIONS
               valueFrom:
