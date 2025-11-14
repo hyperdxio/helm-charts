@@ -14,6 +14,16 @@ entries:
   hdx-oss-v2:
   - apiVersion: v2
     appVersion: 2.7.1
+    created: "2025-11-14T18:37:17.418869651Z"
+    description: A Helm chart for HyperDX OSS V2
+    digest: 9ea92f2307a77cdb0ba2fa465a5e4ebd8155d2ce9eb761d53859034694543022
+    name: hdx-oss-v2
+    type: application
+    urls:
+    - https://github.com/hyperdxio/helm-charts/releases/download/hdx-oss-v2-0.8.4/hdx-oss-v2-0.8.4.tgz
+    version: 0.8.4
+  - apiVersion: v2
+    appVersion: 2.7.1
     created: "2025-11-13T15:39:15.990258555Z"
     description: A Helm chart for HyperDX OSS V2
     digest: 70967e57510c21e84dedf1f3333fde48a6dd55b22a63b585e268c461c2cf17ca
@@ -262,4 +272,4 @@ entries:
     urls:
     - https://github.com/hyperdxio/helm-charts/releases/download/hdx-oss-v2-0.1.0/hdx-oss-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-13T15:39:15.990481083Z"
+generated: "2025-11-14T18:37:17.419067882Z"
