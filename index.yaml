@@ -12,17 +12,6 @@ entries:
     urls:
     - https://github.com/hyperdxio/helm-charts/releases/download/clickstack-1.0.0/clickstack-1.0.0.tgz
     version: 1.0.0
-  hdx-oss:
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2025-01-31T15:59:26.06039205Z"
-    description: A Helm chart for HyperDX OSS
-    digest: 3716fce0fa48c817c6044d6e35b7ffc5b0bfadfe6d2647da51a22afdebbd48d0
-    name: hdx-oss
-    type: application
-    urls:
-    - https://github.com/hyperdxio/helm-charts/releases/download/hdx-oss-0.1.0/hdx-oss-0.1.0.tgz
-    version: 0.1.0
   hdx-oss-v2:
   - apiVersion: v2
     appVersion: 2.7.1
