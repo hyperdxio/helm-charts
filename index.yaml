@@ -1,5 +1,17 @@
 apiVersion: v1
 entries:
+  clickstack:
+  - apiVersion: v2
+    appVersion: 2.7.1
+    created: "2025-11-18T15:08:28Z"
+    description: A Helm chart for ClickStack - Full-stack observability with ClickHouse,
+      OpenTelemetry, and HyperDX
+    digest: 8bbaf7da8babaacc02f91f73cef861977e2d847ba1cb26d28391cdf4945921ad
+    name: clickstack
+    type: application
+    urls:
+    - https://github.com/hyperdxio/helm-charts/releases/download/clickstack-1.0.0/clickstack-1.0.0.tgz
+    version: 1.0.0
   hdx-oss:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -272,4 +284,4 @@ entries:
     urls:
     - https://github.com/hyperdxio/helm-charts/releases/download/hdx-oss-v2-0.1.0/hdx-oss-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-14T18:37:17.419067882Z"
+generated: "2025-11-18T16:08:28Z"
