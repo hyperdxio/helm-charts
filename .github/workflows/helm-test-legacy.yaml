@@ -1,4 +1,4 @@
-name: Helm Chart Tests
+name: Helm Chart Tests (legacy)
 
 on:
   push:
@@ -33,4 +33,4 @@ jobs:
 
       - name: Run helm-unittest
         run: |
-          helm unittest charts/clickstack
+          helm unittest charts/hdx-oss-v2
