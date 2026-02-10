@@ -10,6 +10,28 @@ entries:
           url: https://github.com/hyperdxio/hyperdx
     apiVersion: v2
     appVersion: 2.8.0
+    created: "2026-02-10T14:44:41.425936993Z"
+    description: A Helm chart for ClickStack - Full-stack observability with ClickHouse,
+      OpenTelemetry, and HyperDX
+    digest: 61fd129f219225b4aa2b0c03625d398cbe0a4173f9a82fa1d9769cb4a858b9d3
+    home: https://clickhouse.com/docs/use-cases/observability/clickstack
+    name: clickstack
+    sources:
+    - https://github.com/hyperdxio/hyperdx
+    - https://github.com/hyperdxio/helm-charts
+    type: application
+    urls:
+    - https://github.com/hyperdxio/helm-charts/releases/download/clickstack-1.1.1/clickstack-1.1.1.tgz
+    version: 1.1.1
+  - annotations:
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/hyperdxio/helm-charts
+        - name: Upstream Project
+          url: https://github.com/hyperdxio/hyperdx
+    apiVersion: v2
+    appVersion: 2.8.0
     created: "2026-01-05T19:35:57.562964786Z"
     description: A Helm chart for ClickStack - Full-stack observability with ClickHouse,
       OpenTelemetry, and HyperDX
@@ -317,4 +339,4 @@ entries:
     urls:
     - https://github.com/hyperdxio/helm-charts/releases/download/hdx-oss-v2-0.1.0/hdx-oss-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-05T19:35:57.563037648Z"
+generated: "2026-02-10T14:44:41.640521965Z"
