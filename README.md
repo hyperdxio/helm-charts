@@ -4,7 +4,7 @@
 
 ## ⚠️ REPOSITORY MIGRATION NOTICE
 
-**Active development has been migrated to the [ClickStack Helm Charts repository](https://clickhouse.github.io/ClickStack-helm-charts).**
+**Active development has been migrated to the [ClickStack Helm Charts repository](https://github.com/ClickHouse/ClickStack-helm-charts).**
 
 This repository will remain available as **read-only** for historical reference, but **no new releases will be published here**. All future updates, bug fixes, and features will be available only in the new repository.
 
@@ -27,7 +27,7 @@ helm upgrade my-release clickstack/clickstack
 helm repo remove <old-repo-name>
 ```
 
-For more information and the latest releases, visit: **https://clickhouse.github.io/ClickStack-helm-charts**
+For more information and the latest releases, visit: **https://github.com/ClickHouse/ClickStack-helm-charts**
 
 ---
 
